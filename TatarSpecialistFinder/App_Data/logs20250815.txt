@@ -1,0 +1,682 @@
+2025-08-15 17:21:29.173 +02:00 [INF] Now listening on: https://localhost:7280
+2025-08-15 17:21:29.221 +02:00 [INF] Now listening on: http://localhost:5090
+2025-08-15 17:21:29.232 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-15 17:21:29.364 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-15 17:21:29.366 +02:00 [INF] Hosting environment: Development
+2025-08-15 17:21:29.367 +02:00 [INF] Content root path: C:\Users\brokl\source\repos\TatarSpecialistFinder\TatarSpecialistFinder
+2025-08-15 17:22:53.230 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 17:22:53.546 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 92.5787 ms
+2025-08-15 17:22:53.557 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 337.5151ms
+2025-08-15 17:22:53.591 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 17:22:53.628 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 37.543ms
+2025-08-15 17:22:53.698 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 17:22:53.748 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.1704ms
+2025-08-15 17:22:53.967 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 17:22:53.985 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 12.9280 ms
+2025-08-15 17:22:53.988 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.4166ms
+2025-08-15 17:23:23.582 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7280/api/requests - application/json 98
+2025-08-15 17:23:23.612 +02:00 [INF] Executing endpoint 'HTTP: POST /api/requests'
+2025-08-15 17:23:23.880 +02:00 [INF] New request created: string, contact: string, where: string
+2025-08-15 17:23:24.940 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (Size = 6), @p1='?' (DbType = DateTime), @p2='?' (Size = 6), @p3='?' (DbType = Int32), @p4='?' (Size = 6), @p5='?' (Size = 6)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ApplicationRequests" ("Contact", "CreatedAt", "Name", "Status", "WhatNeeded", "WhereNeeded")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2025-08-15 17:23:25.000 +02:00 [INF] Setting HTTP status code 201.
+2025-08-15 17:23:25.008 +02:00 [INF] Writing value of type '<>f__AnonymousType1`1' as Json.
+2025-08-15 17:23:25.013 +02:00 [INF] Executed endpoint 'HTTP: POST /api/requests'
+2025-08-15 17:23:25.015 +02:00 [INF] HTTP POST /api/requests responded 201 in 1427.3077 ms
+2025-08-15 17:23:25.026 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7280/api/requests - 201 null application/json; charset=utf-8 1444.3107ms
+2025-08-15 17:44:16.827 +02:00 [INF] Now listening on: https://localhost:7280
+2025-08-15 17:44:16.861 +02:00 [INF] Now listening on: http://localhost:5090
+2025-08-15 17:44:16.868 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-15 17:44:16.969 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-15 17:44:16.970 +02:00 [INF] Hosting environment: Development
+2025-08-15 17:44:16.971 +02:00 [INF] Content root path: C:\Users\brokl\source\repos\TatarSpecialistFinder\TatarSpecialistFinder
+2025-08-15 17:46:12.319 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/api/requests - null null
+2025-08-15 17:46:12.418 +02:00 [INF] CORS policy execution successful.
+2025-08-15 17:46:12.434 +02:00 [INF] Executing endpoint 'HTTP: GET /api/requests'
+2025-08-15 17:46:13.725 +02:00 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Name", "a"."Contact", "a"."WhatNeeded", "a"."WhereNeeded", "a"."CreatedAt", CASE "a"."Status"
+    WHEN 0 THEN 'New'
+    WHEN 1 THEN 'SentToAdmin'
+    WHEN 2 THEN 'Approved'
+    WHEN 3 THEN 'Published'
+    WHEN 4 THEN 'Closed'
+    ELSE CAST("a"."Status" AS TEXT)
+END AS "Status"
+FROM "ApplicationRequests" AS "a"
+ORDER BY "a"."Id" DESC
+2025-08-15 17:46:13.767 +02:00 [INF] Returned 5 requests
+2025-08-15 17:46:13.776 +02:00 [INF] Setting HTTP status code 200.
+2025-08-15 17:46:13.789 +02:00 [INF] Writing value of type 'List`1' as Json.
+2025-08-15 17:46:13.802 +02:00 [INF] Executed endpoint 'HTTP: GET /api/requests'
+2025-08-15 17:46:13.807 +02:00 [INF] HTTP GET /api/requests responded 200 in 1381.0904 ms
+2025-08-15 17:46:13.814 +02:00 [INF] HTTP GET /api/requests responded 200 in 1417.4667 ms
+2025-08-15 17:46:13.829 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/api/requests - 200 null application/json; charset=utf-8 1516.0821ms
+2025-08-15 18:02:44.570 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7280/api/requests - null null
+2025-08-15 18:02:44.575 +02:00 [INF] CORS policy execution successful.
+2025-08-15 18:02:44.577 +02:00 [INF] HTTP OPTIONS /api/requests responded 204 in 2.8483 ms
+2025-08-15 18:02:44.580 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7280/api/requests - 204 null null 11.1545ms
+2025-08-15 18:02:44.583 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7280/api/requests - application/json 149
+2025-08-15 18:02:44.588 +02:00 [INF] CORS policy execution successful.
+2025-08-15 18:02:44.590 +02:00 [INF] Executing endpoint 'HTTP: POST /api/requests'
+2025-08-15 18:02:44.609 +02:00 [INF] New request created: Тестовый клиент, contact: @test_contact, where: Казань
+2025-08-15 18:02:44.872 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 13), @p1='?' (DbType = DateTime), @p2='?' (Size = 15), @p3='?' (DbType = Int32), @p4='?' (Size = 20), @p5='?' (Size = 6)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ApplicationRequests" ("Contact", "CreatedAt", "Name", "Status", "WhatNeeded", "WhereNeeded")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2025-08-15 18:02:44.901 +02:00 [INF] Setting HTTP status code 201.
+2025-08-15 18:02:44.905 +02:00 [INF] Writing value of type '<>f__AnonymousType1`1' as Json.
+2025-08-15 18:02:44.907 +02:00 [INF] Executed endpoint 'HTTP: POST /api/requests'
+2025-08-15 18:02:44.909 +02:00 [INF] HTTP POST /api/requests responded 201 in 318.8622 ms
+2025-08-15 18:02:44.911 +02:00 [INF] HTTP POST /api/requests responded 201 in 322.9187 ms
+2025-08-15 18:02:44.913 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7280/api/requests - 201 null application/json; charset=utf-8 330.2758ms
+2025-08-15 18:07:57.519 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:07:57.767 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 89.1459 ms
+2025-08-15 18:07:57.772 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 252.4204ms
+2025-08-15 18:07:57.793 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:07:57.837 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 44.1402ms
+2025-08-15 18:07:57.893 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:07:57.954 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.0819ms
+2025-08-15 18:07:58.151 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:07:58.170 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 8.4174 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:07:58.179 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:07:58.188 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 37.0889ms
+2025-08-15 18:08:11.025 +02:00 [INF] Now listening on: https://localhost:7280
+2025-08-15 18:08:11.058 +02:00 [INF] Now listening on: http://localhost:5090
+2025-08-15 18:08:11.064 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-15 18:08:11.132 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-15 18:08:11.133 +02:00 [INF] Hosting environment: Development
+2025-08-15 18:08:11.135 +02:00 [INF] Content root path: C:\Users\brokl\source\repos\TatarSpecialistFinder\TatarSpecialistFinder
+2025-08-15 18:08:17.941 +02:00 [INF] Now listening on: https://localhost:7280
+2025-08-15 18:08:17.976 +02:00 [INF] Now listening on: http://localhost:5090
+2025-08-15 18:08:17.984 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-15 18:08:18.056 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-15 18:08:18.057 +02:00 [INF] Hosting environment: Development
+2025-08-15 18:08:18.060 +02:00 [INF] Content root path: C:\Users\brokl\source\repos\TatarSpecialistFinder\TatarSpecialistFinder
+2025-08-15 18:08:24.918 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:08:25.126 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 57.1779 ms
+2025-08-15 18:08:25.142 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 229.1161ms
+2025-08-15 18:08:25.147 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:08:25.153 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:08:25.179 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 26.2675ms
+2025-08-15 18:08:25.198 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.4841ms
+2025-08-15 18:08:25.262 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:08:25.280 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 7.3911 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:08:25.287 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:08:25.295 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 33.4044ms
+2025-08-15 18:08:28.457 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:08:28.465 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 2.2700 ms
+2025-08-15 18:08:28.469 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 12.603ms
+2025-08-15 18:08:28.485 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:08:28.493 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:08:28.509 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 16.2773ms
+2025-08-15 18:08:28.511 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.9893ms
+2025-08-15 18:08:28.605 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:08:28.610 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 2.0282 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:08:28.623 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:08:28.629 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 24.4515ms
+2025-08-15 18:08:29.664 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:08:29.671 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.0488 ms
+2025-08-15 18:08:29.674 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 10.2881ms
+2025-08-15 18:08:29.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:08:29.691 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:08:29.696 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 5.8645ms
+2025-08-15 18:08:29.700 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.6751ms
+2025-08-15 18:08:29.791 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:08:29.799 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 4.5249 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:08:29.805 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:08:29.810 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 18.5861ms
+2025-08-15 18:08:44.184 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:08:44.189 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.3001 ms
+2025-08-15 18:08:44.192 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 7.669ms
+2025-08-15 18:08:44.205 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:08:44.206 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:08:44.211 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 5.3749ms
+2025-08-15 18:08:44.215 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 9.692ms
+2025-08-15 18:08:44.317 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:08:44.323 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 1.6384 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:08:44.329 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:08:44.334 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 16.3759ms
+2025-08-15 18:08:45.027 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:08:45.032 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.4708 ms
+2025-08-15 18:08:45.035 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 8.2619ms
+2025-08-15 18:08:45.058 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:08:45.059 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:08:45.068 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 9.3482ms
+2025-08-15 18:08:45.071 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.1775ms
+2025-08-15 18:08:45.168 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:08:45.176 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 3.3372 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:08:45.183 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:08:45.188 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 20.0994ms
+2025-08-15 18:09:16.526 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:09:16.537 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.3464 ms
+2025-08-15 18:09:16.539 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 12.8733ms
+2025-08-15 18:09:16.556 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:09:16.566 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:09:16.572 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.3021ms
+2025-08-15 18:09:16.579 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 13.2909ms
+2025-08-15 18:09:16.675 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:09:16.681 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 1.7035 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:09:16.688 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:09:16.693 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 17.692ms
+2025-08-15 18:09:17.504 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:09:17.510 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.6552 ms
+2025-08-15 18:09:17.513 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 8.9025ms
+2025-08-15 18:09:17.526 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:09:17.537 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.6755ms
+2025-08-15 18:09:17.538 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:09:17.545 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 6.9699ms
+2025-08-15 18:09:17.642 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:09:17.649 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 2.1785 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:09:17.656 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:09:17.662 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 20.3065ms
+2025-08-15 18:10:32.630 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:10:32.653 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 4.9972 ms
+2025-08-15 18:10:32.655 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 25.293ms
+2025-08-15 18:10:32.675 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:10:32.686 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:10:32.722 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.0716ms
+2025-08-15 18:10:32.725 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 39.5613ms
+2025-08-15 18:10:32.806 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:10:32.811 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 1.7052 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:10:32.816 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:10:32.820 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 14.2527ms
+2025-08-15 18:10:32.887 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:10:32.891 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.2956 ms
+2025-08-15 18:10:32.894 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 6.7205ms
+2025-08-15 18:10:32.908 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:10:32.910 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:10:32.914 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 4.0042ms
+2025-08-15 18:10:32.916 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 7.8327ms
+2025-08-15 18:10:33.004 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:10:33.009 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 1.4675 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:10:33.015 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:10:33.019 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 15.0438ms
+2025-08-15 18:10:35.372 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/ - null null
+2025-08-15 18:10:35.377 +02:00 [INF] HTTP GET /swagger/ responded 301 in 0.3143 ms
+2025-08-15 18:10:35.380 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/ - 301 0 null 8.3131ms
+2025-08-15 18:10:35.416 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:10:35.416 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:10:35.428 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 11.1799ms
+2025-08-15 18:10:35.431 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 15.2512ms
+2025-08-15 18:10:35.531 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:10:35.536 +02:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 1.5533 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-08-15 18:10:35.541 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET " for actions - HTTP: GET /, HTTP: GET /. Actions require a unique method/path combination for Swagger/OpenAPI 2.0 and 3.0. Use ConflictingActionsResolver as a workaround or provide your own implementation of PathGroupSelector.
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`4 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(OpenApiDocument document, IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-08-15 18:10:35.546 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 14.8704ms
+2025-08-15 18:18:37.342 +02:00 [INF] Now listening on: https://localhost:7280
+2025-08-15 18:18:37.400 +02:00 [INF] Now listening on: http://localhost:5090
+2025-08-15 18:18:37.413 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-15 18:18:37.530 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-15 18:18:37.531 +02:00 [INF] Hosting environment: Development
+2025-08-15 18:18:37.532 +02:00 [INF] Content root path: C:\Users\brokl\source\repos\TatarSpecialistFinder\TatarSpecialistFinder
+2025-08-15 18:18:57.721 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:18:57.925 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 53.5407 ms
+2025-08-15 18:18:57.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 219.3561ms
+2025-08-15 18:18:57.949 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:18:57.949 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:18:57.990 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 40.2828ms
+2025-08-15 18:18:58.011 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.3611ms
+2025-08-15 18:18:58.078 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:18:58.090 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 7.0833 ms
+2025-08-15 18:18:58.093 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.806ms
+2025-08-15 18:19:30.259 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7280/api/requests - application/json 98
+2025-08-15 18:19:30.302 +02:00 [INF] Executing endpoint 'HTTP: POST /api/requests'
+2025-08-15 18:19:30.462 +02:00 [INF] New request created: string, contact: string, where: string
+2025-08-15 18:19:31.244 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 6), @p1='?' (DbType = DateTime), @p2='?' (Size = 6), @p3='?' (DbType = Int32), @p4='?' (Size = 6), @p5='?' (Size = 6)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ApplicationRequests" ("Contact", "CreatedAt", "Name", "Status", "WhatNeeded", "WhereNeeded")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2025-08-15 18:19:31.295 +02:00 [INF] Setting HTTP status code 201.
+2025-08-15 18:19:31.301 +02:00 [INF] Writing value of type '<>f__AnonymousType1`1' as Json.
+2025-08-15 18:19:31.304 +02:00 [INF] Executed endpoint 'HTTP: POST /api/requests'
+2025-08-15 18:19:31.305 +02:00 [INF] HTTP POST /api/requests responded 201 in 1032.9584 ms
+2025-08-15 18:19:31.314 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7280/api/requests - 201 null application/json; charset=utf-8 1055.7789ms
+2025-08-15 18:34:36.562 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:34:36.583 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.5256 ms
+2025-08-15 18:34:36.586 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 23.8913ms
+2025-08-15 18:34:36.615 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:34:36.636 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 21.6512ms
+2025-08-15 18:34:36.709 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:34:36.731 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.2928ms
+2025-08-15 18:34:37.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:34:37.059 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 3.1188 ms
+2025-08-15 18:34:37.061 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.996ms
+2025-08-15 18:38:26.374 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:38:26.393 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.3206 ms
+2025-08-15 18:38:26.395 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 21.5494ms
+2025-08-15 18:38:26.419 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:38:26.422 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:38:26.430 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 7.2337ms
+2025-08-15 18:38:26.441 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.071ms
+2025-08-15 18:38:26.544 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:38:26.556 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1.8828 ms
+2025-08-15 18:38:26.558 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.2406ms
+2025-08-15 18:39:52.919 +02:00 [INF] Now listening on: https://localhost:7280
+2025-08-15 18:39:52.972 +02:00 [INF] Now listening on: http://localhost:5090
+2025-08-15 18:39:52.981 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-15 18:39:53.090 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-15 18:39:53.092 +02:00 [INF] Hosting environment: Development
+2025-08-15 18:39:53.093 +02:00 [INF] Content root path: C:\Users\brokl\source\repos\TatarSpecialistFinder\TatarSpecialistFinder
+2025-08-15 18:40:19.364 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:40:19.659 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 88.8435 ms
+2025-08-15 18:40:19.671 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 314.8084ms
+2025-08-15 18:40:19.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:40:19.691 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:40:19.730 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 38.6728ms
+2025-08-15 18:40:19.759 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 69.6632ms
+2025-08-15 18:40:20.027 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:40:20.042 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 9.9666 ms
+2025-08-15 18:40:20.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.6919ms
+2025-08-15 18:55:12.763 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 18:55:12.783 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.5194 ms
+2025-08-15 18:55:12.785 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 25.8118ms
+2025-08-15 18:55:12.811 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 18:55:12.817 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 5.926ms
+2025-08-15 18:55:12.844 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 18:55:12.865 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.7447ms
+2025-08-15 18:55:13.016 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 18:55:13.025 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 3.7982 ms
+2025-08-15 18:55:13.028 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.7135ms
+2025-08-15 19:01:00.726 +02:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-15 19:01:00.809 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-08-15 19:01:00.825 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-08-15 17:01:00.8187122+00:00');
+SELECT changes();
+2025-08-15 19:01:00.882 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2025-08-15 19:01:00.893 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-08-15 19:01:00.899 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-15 19:01:00.908 +02:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-15 19:01:00.911 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+2025-08-15 19:01:01.188 +02:00 [INF] Now listening on: https://localhost:7280
+2025-08-15 19:01:01.190 +02:00 [INF] Now listening on: http://localhost:5090
+2025-08-15 19:01:01.198 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-15 19:01:01.289 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-15 19:01:01.290 +02:00 [INF] Hosting environment: Development
+2025-08-15 19:01:01.293 +02:00 [INF] Content root path: C:\Users\brokl\source\repos\TatarSpecialistFinder\TatarSpecialistFinder
+2025-08-15 19:01:11.417 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 19:01:11.709 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 90.0792 ms
+2025-08-15 19:01:11.732 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 320.7341ms
+2025-08-15 19:01:11.760 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 19:01:11.778 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 17.6849ms
+2025-08-15 19:01:11.866 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 19:01:11.931 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.2934ms
+2025-08-15 19:01:12.117 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 19:01:12.131 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 10.6149 ms
+2025-08-15 19:01:12.135 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.3162ms
+2025-08-15 19:01:16.502 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7280/api/requests - application/json 98
+2025-08-15 19:01:16.527 +02:00 [INF] CORS policy execution failed.
+2025-08-15 19:01:16.529 +02:00 [INF] Request origin https://localhost:7280 does not have permission to access the resource.
+2025-08-15 19:01:16.543 +02:00 [INF] Executing endpoint 'HTTP: POST /api/requests'
+2025-08-15 19:01:16.576 +02:00 [INF] New request created: string, contact: string, where: string
+2025-08-15 19:01:16.852 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (Size = 6), @p1='?' (DbType = DateTime), @p2='?' (Size = 6), @p3='?' (DbType = Int32), @p4='?' (Size = 6), @p5='?' (Size = 6)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ApplicationRequests" ("Contact", "CreatedAt", "Name", "Status", "WhatNeeded", "WhereNeeded")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2025-08-15 19:01:16.917 +02:00 [INF] Setting HTTP status code 201.
+2025-08-15 19:01:16.927 +02:00 [INF] Writing value of type '<>f__AnonymousType2`1' as Json.
+2025-08-15 19:01:16.934 +02:00 [INF] Executed endpoint 'HTTP: POST /api/requests'
+2025-08-15 19:01:16.936 +02:00 [INF] HTTP POST /api/requests responded 201 in 422.6576 ms
+2025-08-15 19:01:16.945 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7280/api/requests - 201 null application/json; charset=utf-8 442.7281ms
+2025-08-15 19:01:42.661 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/ping - null null
+2025-08-15 19:01:42.666 +02:00 [INF] CORS policy execution successful.
+2025-08-15 19:01:42.668 +02:00 [INF] Executing endpoint 'HTTP: GET /ping'
+2025-08-15 19:01:42.675 +02:00 [INF] Executed endpoint 'HTTP: GET /ping'
+2025-08-15 19:01:42.689 +02:00 [INF] HTTP GET /ping responded 200 in 24.3355 ms
+2025-08-15 19:01:42.692 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/ping - 200 null text/plain; charset=utf-8 31.2459ms
+2025-08-15 19:02:25.268 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7280/api/requests - null null
+2025-08-15 19:02:25.274 +02:00 [INF] CORS policy execution successful.
+2025-08-15 19:02:25.276 +02:00 [INF] HTTP OPTIONS /api/requests responded 204 in 4.0399 ms
+2025-08-15 19:02:25.280 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7280/api/requests - 204 null null 11.3971ms
+2025-08-15 19:02:25.282 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7280/api/requests - application/json 149
+2025-08-15 19:02:25.287 +02:00 [INF] CORS policy execution successful.
+2025-08-15 19:02:25.289 +02:00 [INF] Executing endpoint 'HTTP: POST /api/requests'
+2025-08-15 19:02:25.293 +02:00 [INF] New request created: Тестовый клиент, contact: @test_contact, where: Казань
+2025-08-15 19:02:25.366 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 13), @p1='?' (DbType = DateTime), @p2='?' (Size = 15), @p3='?' (DbType = Int32), @p4='?' (Size = 20), @p5='?' (Size = 6)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ApplicationRequests" ("Contact", "CreatedAt", "Name", "Status", "WhatNeeded", "WhereNeeded")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2025-08-15 19:02:25.372 +02:00 [INF] Setting HTTP status code 201.
+2025-08-15 19:02:25.375 +02:00 [INF] Writing value of type '<>f__AnonymousType2`1' as Json.
+2025-08-15 19:02:25.377 +02:00 [INF] Executed endpoint 'HTTP: POST /api/requests'
+2025-08-15 19:02:25.379 +02:00 [INF] HTTP POST /api/requests responded 201 in 91.5670 ms
+2025-08-15 19:02:25.382 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7280/api/requests - 201 null application/json; charset=utf-8 100.5136ms
+2025-08-15 19:10:20.427 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 19:10:20.456 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.8511 ms
+2025-08-15 19:10:20.461 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 34.345ms
+2025-08-15 19:10:20.479 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 19:10:20.479 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 19:10:20.510 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 30.3146ms
+2025-08-15 19:10:20.510 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 30.8484ms
+2025-08-15 19:10:20.853 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 19:10:20.865 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 3.9360 ms
+2025-08-15 19:10:20.868 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.6455ms
+2025-08-15 19:10:21.131 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 19:10:21.139 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.5462 ms
+2025-08-15 19:10:21.142 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 10.8797ms
+2025-08-15 19:10:21.156 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 19:10:21.158 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 19:10:21.164 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 6.1859ms
+2025-08-15 19:10:21.173 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.5098ms
+2025-08-15 19:10:21.297 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 19:10:21.302 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 2.2612 ms
+2025-08-15 19:10:21.306 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 8.9145ms
+2025-08-15 19:10:22.106 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 19:10:22.113 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.4711 ms
+2025-08-15 19:10:22.118 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 9.5581ms
+2025-08-15 19:10:22.130 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 19:10:22.131 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 19:10:22.141 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 9.8712ms
+2025-08-15 19:10:22.145 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 14.6443ms
+2025-08-15 19:10:22.252 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 19:10:22.258 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1.8782 ms
+2025-08-15 19:10:22.260 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 8.0908ms
+2025-08-15 19:10:22.649 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 19:10:22.656 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.7410 ms
+2025-08-15 19:10:22.659 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 9.6041ms
+2025-08-15 19:10:22.672 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 19:10:22.679 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 19:10:22.683 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.9415ms
+2025-08-15 19:10:22.685 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 6.1162ms
+2025-08-15 19:10:22.785 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 19:10:22.792 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1.4400 ms
+2025-08-15 19:10:22.794 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 8.4544ms
+2025-08-15 19:18:57.359 +02:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-15 19:18:57.432 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-08-15 19:18:57.446 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-08-15 17:18:57.4413441+00:00');
+SELECT changes();
+2025-08-15 19:18:57.507 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2025-08-15 19:18:57.517 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-08-15 19:18:57.523 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-15 19:18:57.533 +02:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-15 19:18:57.536 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+2025-08-15 19:18:57.792 +02:00 [INF] Now listening on: https://localhost:7280
+2025-08-15 19:18:57.793 +02:00 [INF] Now listening on: http://localhost:5090
+2025-08-15 19:18:57.802 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-15 19:18:57.921 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-15 19:18:57.923 +02:00 [INF] Hosting environment: Development
+2025-08-15 19:18:57.925 +02:00 [INF] Content root path: C:\Users\brokl\source\repos\TatarSpecialistFinder\TatarSpecialistFinder
+2025-08-15 19:20:43.207 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 19:20:43.522 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 110.7390 ms
+2025-08-15 19:20:43.535 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 336.6332ms
+2025-08-15 19:20:43.541 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 19:20:43.548 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 19:20:43.607 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 64.4205ms
+2025-08-15 19:20:43.636 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 94.8853ms
+2025-08-15 19:20:43.701 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 19:20:43.716 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 10.1920 ms
+2025-08-15 19:20:43.720 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.2127ms
+2025-08-15 19:32:17.252 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - null null
+2025-08-15 19:32:17.276 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.3351 ms
+2025-08-15 19:32:17.291 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - 200 null text/html;charset=utf-8 38.4888ms
+2025-08-15 19:32:17.306 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - null null
+2025-08-15 19:32:17.307 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-15 19:32:17.318 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 11.161ms
+2025-08-15 19:32:17.332 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.7342ms
+2025-08-15 19:32:17.418 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - null null
+2025-08-15 19:32:17.427 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 4.6390 ms
+2025-08-15 19:32:17.430 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.3469ms
+2025-08-15 19:43:29.387 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7280/api/requests - null null
+2025-08-15 19:43:29.433 +02:00 [INF] CORS policy execution successful.
+2025-08-15 19:43:29.436 +02:00 [INF] HTTP OPTIONS /api/requests responded 204 in 15.4462 ms
+2025-08-15 19:43:29.439 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7280/api/requests - 204 null null 52.7773ms
+2025-08-15 19:43:29.441 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7280/api/requests - application/json 99
+2025-08-15 19:43:29.448 +02:00 [INF] CORS policy execution successful.
+2025-08-15 19:43:29.464 +02:00 [INF] Executing endpoint 'HTTP: POST /api/requests'
+2025-08-15 19:43:29.501 +02:00 [INF] New request created: цвас, contact: цуавцу, where: цуауца
+2025-08-15 19:43:29.775 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 6), @p1='?' (DbType = DateTime), @p2='?' (Size = 4), @p3='?' (DbType = Int32), @p4='?' (Size = 5), @p5='?' (Size = 6)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ApplicationRequests" ("Contact", "CreatedAt", "Name", "Status", "WhatNeeded", "WhereNeeded")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2025-08-15 19:43:29.835 +02:00 [INF] Setting HTTP status code 201.
+2025-08-15 19:43:29.844 +02:00 [INF] Writing value of type '<>f__AnonymousType2`1' as Json.
+2025-08-15 19:43:29.850 +02:00 [INF] Executed endpoint 'HTTP: POST /api/requests'
+2025-08-15 19:43:29.852 +02:00 [INF] HTTP POST /api/requests responded 201 in 404.8775 ms
+2025-08-15 19:43:29.864 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7280/api/requests - 201 null application/json; charset=utf-8 422.3667ms
+2025-08-15 19:43:45.966 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7280/api/requests - null null
+2025-08-15 19:43:45.971 +02:00 [INF] CORS policy execution successful.
+2025-08-15 19:43:45.974 +02:00 [INF] HTTP OPTIONS /api/requests responded 204 in 4.0435 ms
+2025-08-15 19:43:45.978 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7280/api/requests - 204 null null 12.5493ms
+2025-08-15 19:43:45.980 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7280/api/requests - application/json 107
+2025-08-15 19:43:45.985 +02:00 [INF] CORS policy execution successful.
+2025-08-15 19:43:45.987 +02:00 [INF] Executing endpoint 'HTTP: POST /api/requests'
+2025-08-15 19:43:45.992 +02:00 [INF] New request created: высвс, contact: ама, where: цуауцаама
+2025-08-15 19:43:46.062 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (Size = 5), @p3='?' (DbType = Int32), @p4='?' (Size = 8), @p5='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ApplicationRequests" ("Contact", "CreatedAt", "Name", "Status", "WhatNeeded", "WhereNeeded")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5)
+RETURNING "Id";
+2025-08-15 19:43:46.074 +02:00 [INF] Setting HTTP status code 201.
+2025-08-15 19:43:46.076 +02:00 [INF] Writing value of type '<>f__AnonymousType2`1' as Json.
+2025-08-15 19:43:46.078 +02:00 [INF] Executed endpoint 'HTTP: POST /api/requests'
+2025-08-15 19:43:46.080 +02:00 [INF] HTTP POST /api/requests responded 201 in 94.4954 ms
+2025-08-15 19:43:46.083 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7280/api/requests - 201 null application/json; charset=utf-8 102.9982ms
